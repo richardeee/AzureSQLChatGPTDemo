@@ -19,7 +19,7 @@ const defaultConnection: Connection = {
   title: "",
   engineType: Engine.MySQL,
   host: "",
-  port: 3306,
+  port: '3306',
   username: "",
   password: "",
 };
