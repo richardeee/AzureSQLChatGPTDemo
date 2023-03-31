@@ -38,12 +38,12 @@ const QueryDrawer = () => {
 
   const executeStatement = async (statement: string) => {
     if (!statement) {
-      toast.error("Please enter a statement.");
+      toast.error("请输入一段SQL语句.");
       return;
     }
 
     if (!context) {
-      toast.error("No execution context found.");
+      toast.error("没有连接信息");
       setIsLoading(false);
       setRawResults([]);
       return;
@@ -72,7 +72,7 @@ const QueryDrawer = () => {
       }
     } catch (error) {
       console.error(error);
-      toast.error("Failed to execute statement");
+      toast.error("执行失败");
     } finally {
       setIsLoading(false);
     }
@@ -86,7 +86,7 @@ const QueryDrawer = () => {
         <button className="btn btn-sm btn-circle" onClick={close}>
           <Icon.IoMdClose className="w-5 h-auto" />
         </button>
-        <h3 className="font-bold text-2xl mt-4">Execute query</h3>
+        <h3 className="font-bold text-2xl mt-4">执行语句</h3>
         {!context ? (
           <div className="w-full flex flex-col justify-center items-center py-6 pt-10">
             <Icon.BiSad className="w-7 h-auto opacity-70" />
@@ -95,7 +95,7 @@ const QueryDrawer = () => {
         ) : (
           <>
             <div className="w-full flex flex-row justify-start items-center mt-4">
-              <span className="opacity-70">Connection: </span>
+              <span className="opacity-70">数据库连接: </span>
               <EngineIcon className="w-6 h-auto" engine={context.connection.engineType} />
               <span>{context.database?.name}</span>
             </div>
@@ -106,8 +106,9 @@ const QueryDrawer = () => {
                 rows={1}
                 minRows={1}
                 maxRows={5}
-                placeholder="Enter your SQL statement here..."
+                placeholder="请输入你的查询语句.."
                 onChange={(e) => setStatement(e.target.value)}
+                disabled={true}
               />
               <button
                 className="w-8 p-1 -translate-y-1 cursor-pointer rounded-md hover:shadow hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60"
@@ -120,12 +121,12 @@ const QueryDrawer = () => {
               {isLoading ? (
                 <div className="w-full flex flex-col justify-center items-center py-6 pt-10">
                   <Icon.BiLoaderAlt className="w-7 h-auto opacity-70 animate-spin" />
-                  <span className="text-sm font-mono text-gray-500 mt-2">Executing</span>
+                  <span className="text-sm font-mono text-gray-500 mt-2">执行中</span>
                 </div>
               ) : rawResults.length === 0 ? (
                 <div className="w-full flex flex-col justify-center items-center py-6 pt-10">
                   <Icon.BsBox2 className="w-7 h-auto opacity-70" />
-                  <span className="text-sm font-mono text-gray-500 mt-2">No data return.</span>
+                  <span className="text-sm font-mono text-gray-500 mt-2">无数据返回</span>
                 </div>
               ) : (
                 <div className="w-full">

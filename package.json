@@ -35,7 +35,8 @@
     "remark-gfm": "^3.0.1",
     "styled-components": "^5.3.9",
     "uuid": "^9.0.0",
-    "zustand": "^4.3.6"
+    "zustand": "^4.3.6",
+    "mysql2":"^3.2.0"
   },
   "devDependencies": {
     "@nem035/gpt-3-encoder": "^1.1.7",

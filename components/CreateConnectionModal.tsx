@@ -85,10 +85,13 @@ const CreateConnectionModal = (props: Props) => {
 
     try {
       let connection: Connection;
+      console.log(`----------------------------isEditing:${isEditing}`)
       if (isEditing) {
+        console.log('-----------------------------updateConnection')
         connectionStore.updateConnection(tempConnection.id, tempConnection);
         connection = tempConnection;
       } else {
+        console.log('---------------------------creatingConnection')
         connection = connectionStore.createConnection(tempConnection);
       }
 
