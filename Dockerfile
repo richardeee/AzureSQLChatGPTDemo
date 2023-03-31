@@ -26,8 +26,9 @@ COPY . .
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
+RUN yarn global add pnpm
 
-RUN yarn build
+RUN pnpm build
 
 # If using npm comment out above and use below instead
 # RUN npm run build
@@ -57,4 +58,4 @@ EXPOSE 3000
 
 ENV PORT 3000
 
-CMD ["node", "server.js"]
+CMD ["pnpm", "start"]

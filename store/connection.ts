@@ -21,6 +21,16 @@ const samplePGConnection: Connection = {
   database: "employee",
 };
 
+const sampleMySQLConnection: Connection = {
+  id: "sample-mysql",
+  title: "Employees MySQL",
+  engineType: Engine.MySQL,
+  host: "gptmysqldemo.mysql.database.chinacloudapi.cn",
+  port: "3306",
+  username: "employeeadmin",
+  password: "!@#$qwerASDF",
+  database: "employees",
+}
 interface ConnectionState {
   connectionList: Connection[];
   databaseList: Database[];
@@ -37,7 +47,7 @@ interface ConnectionState {
 export const useConnectionStore = create<ConnectionState>()(
   persist(
     (set, get) => ({
-      connectionList: [samplePGConnection],
+      connectionList: [samplePGConnection, sampleMySQLConnection],
       databaseList: [],
       createConnection: (connection: Connection) => {
         const createdConnection = {
