@@ -12,7 +12,7 @@ const GitHubStarBadge = (props: Props) => {
       className={`${
         className || ""
       } border rounded flex flex-row justify-start items-center text-black text-xs bg-white shadow-inner overflow-clip hover:opacity-80`}
-      href="https://github.com/richardeee/AzureSQLChatDemo"
+      href="https://github.com/richardeee/AzureSQLChatGPTDemo"
       target="_blank"
       aria-label="Azure SQL Chat Demo"
     >
